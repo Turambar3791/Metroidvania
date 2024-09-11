@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/Metroidvania/[Ll]ibrary/
-/Metroidvania/[Tt]emp/
-/Metroidvania/[Oo]bj/
-/Metroidvania/[Bb]uild/
-/Metroidvania/[Bb]uilds/
-/Metroidvania/[Ll]ogs/
-/Metroidvania/[Uu]ser[Ss]ettings/
+/Metroidvania/Library/
+/Metroidvania/Temp/
+/Metroidvania/Obj/
+/Metroidvania/Build/
+/Metroidvania/Builds/
+/Metroidvania/Logs/
+/Metroidvania/UserSettings/
 art/
 dane do gita.png
 
