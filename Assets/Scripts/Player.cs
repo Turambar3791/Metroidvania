@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private float horizontal;
+    private bool isFacingRight = true;
+
+    private float speed = 6f;
+
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -19,8 +24,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        horizontal = Input.GetAxis("Horizontal");
 
-        rigidBody.velocity = new Vector2(Input.GetAxis("Horizontal") * 5, rigidBody.velocity.y);
+        rigidBody.velocity = new Vector2(horizontal * speed, rigidBody.velocity.y);
 
         //skakanie
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
@@ -30,11 +36,23 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && rigidBody.velocity.y > 0f) {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * 0.5f);
         }
-        
+
+        Flip();
     }
 
     private bool IsGrounded() 
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
     }
 }
