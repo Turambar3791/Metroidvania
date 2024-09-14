@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class Player : MonoBehaviour
 {
@@ -13,13 +14,21 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    private float jumpingPower = 16f;
+    private float jumpingPower = 14.5f;
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
     private float jumpBufferTime = 0.2f;
     private float jumpBufferCounter;
+
+    //knockBack
+    private float KnockbackForce = 15f;
+    public float KnockbackCounter;
+    public float KnockbackTotalTime = 0.1f;
+    public float ImmunityCounter;
+    public float ImmunityTotalTime = 1.5f;
+    public bool KnockFromRight;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +41,26 @@ public class Player : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
 
-        rigidBody.velocity = new Vector2(horizontal * speed, rigidBody.velocity.y);
+        if (KnockbackCounter <= 0)
+        {
+            rigidBody.velocity = new Vector2(horizontal * speed, rigidBody.velocity.y);
+        } else {
+            if(KnockFromRight)
+            {
+                rigidBody.velocity = new Vector2(-KnockbackForce, 3f);
+            } else {
+                rigidBody.velocity = new Vector2(KnockbackForce, 3f);
+            }
+
+            KnockbackCounter -= Time.deltaTime;
+        }
+        if (ImmunityCounter <= 0)
+        {
+
+        } else {
+            ImmunityCounter -= Time.deltaTime;
+        }
+            
 
         if (IsGrounded()) {
             coyoteTimeCounter = coyoteTime;
@@ -60,10 +88,11 @@ public class Player : MonoBehaviour
         Flip();
     }
 
-    private bool IsGrounded() 
+    private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
+
 
     private void Flip()
     {
