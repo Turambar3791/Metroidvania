@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public int maxHealth = 5;
+    public int health;
+
     private float horizontal;
     private bool isFacingRight = true;
 
@@ -13,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    private SpriteRenderer sprite;
 
     private float jumpingPower = 14.5f;
 
@@ -26,41 +31,81 @@ public class Player : MonoBehaviour
     private float KnockbackForce = 15f;
     public float KnockbackCounter;
     public float KnockbackTotalTime = 0.1f;
-    public float ImmunityCounter;
-    public float ImmunityTotalTime = 1.5f;
     public bool KnockFromRight;
+
+    //immunity
+    public float ImmunityCounter;
+    public float ImmunityTotalTime = 2f;
+
+    //death
+    public float DeathCounter;
+    public float DeathTotalTime = 2f;
+
+    public Vector2 spawnPoint;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        // poruszanie sie
         horizontal = Input.GetAxis("Horizontal");
 
-        if (KnockbackCounter <= 0)
+        if (KnockbackCounter <= 0 && health > 0)
         {
             rigidBody.velocity = new Vector2(horizontal * speed, rigidBody.velocity.y);
-        } else {
-            if(KnockFromRight)
+        }
+
+        // knock back
+        if (KnockbackCounter > 0)
+        {
+            if (KnockFromRight)
             {
                 rigidBody.velocity = new Vector2(-KnockbackForce, 3f);
-            } else {
+            }
+            else
+            {
                 rigidBody.velocity = new Vector2(KnockbackForce, 3f);
             }
 
             KnockbackCounter -= Time.deltaTime;
+        } else
+        {
+            if(health <= 0)
+            {
+                rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+            }
         }
+        
+
+        // immunity
         if (ImmunityCounter <= 0)
         {
-
         } else {
             ImmunityCounter -= Time.deltaTime;
         }
-            
+
+        if (DeathCounter <= 0)
+        {
+            if(health <= 0)
+            {
+                rigidBody.transform.position = spawnPoint;
+                KnockbackCounter = 0;
+                health = 5;
+            }
+        }
+        else
+        {
+            DeathCounter -= Time.deltaTime;
+        }
 
         if (IsGrounded()) {
             coyoteTimeCounter = coyoteTime;
@@ -84,8 +129,6 @@ public class Player : MonoBehaviour
 
             coyoteTimeCounter = 0f;
         }
-
-        Flip();
     }
 
     private bool IsGrounded()
@@ -93,6 +136,14 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            DeathCounter = DeathTotalTime;
+        }
+    }
 
     private void Flip()
     {
