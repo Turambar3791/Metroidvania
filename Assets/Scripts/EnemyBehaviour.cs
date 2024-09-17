@@ -13,7 +13,9 @@ public class EnemyBehavior : MonoBehaviour
 
     public Player player;
 
-    Rigidbody2D rigidBody;
+
+
+    public int damage;
 
     // Update is called once per frame
     void Update()
@@ -39,15 +41,16 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        if(player.ImmunityCounter <= 0)
+        if (player.ImmunityCounter <= 0)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collider.CompareTag("Player"))
             {
+                player.TakeDamage(damage);
                 player.KnockbackCounter = player.KnockbackTotalTime;
                 player.ImmunityCounter = player.ImmunityTotalTime;
-                if (collision.transform.position.x <= transform.position.x)
+                if (collider.transform.position.x <= transform.position.x)
                 {
                     player.KnockFromRight = true;
                 }
