@@ -10,6 +10,11 @@ public class M : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
     }
 
+    public void OpenSettings()
+    {
+        SceneManager.LoadSceneAsync(2);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
