@@ -20,7 +20,7 @@ public class SpawnPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && playerTouch)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && playerTouch)
         {
             player.health = 5;
             player.spawnPoint = rigidBody.position;

@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && health>0) {
             jumpBufferCounter = jumpBufferTime;
         } else {
             jumpBufferCounter -= Time.deltaTime;
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            DeathCounter = DeathTotalTime;
+            if(DeathCounter <= 0) DeathCounter = DeathTotalTime;
         }
     }
 
