@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public Player player;
+    public PlayerHealth playerHealth;
     public Camera camera;
 
     // Update is called once per frame
     void Update()
     { 
-        if(player.DeathCounter <= 0 && player.health <= 0)
+        if(playerHealth.DeathCounter <= 0 && playerHealth.health <= 0)
         {
             camera.enabled = false;
         } else

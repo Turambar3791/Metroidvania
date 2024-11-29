@@ -6,32 +6,35 @@ public class PlayerAttack : MonoBehaviour
 {
     private GameObject attackArea = default;
 
-    private bool attacking = false;
+    public bool attacking = false;
+    public bool attackInput;
 
-    private float timeToAttack = 0.25f;
-    private float timer = 0f;
+    public float timeToAttack = 0.25f;
+    private float attackTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        attackArea = transform.GetChild(0).gameObject;
+        attackArea = transform.Find("AttackArea").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        attackInput = UserInput.instance.AttackInput;
+
+        if (attackInput)
         {
             Attack();
         }
 
         if(attacking)
         {
-            timer += Time.deltaTime;
+            attackTimer += Time.deltaTime;
 
-            if(timer >= timeToAttack)
+            if(attackTimer >= timeToAttack)
             {
-                timer = 0;
+                attackTimer = 0;
                 attacking = false;
                 attackArea.SetActive(attacking);
             }

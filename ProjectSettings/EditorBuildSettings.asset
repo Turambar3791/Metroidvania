@@ -6,12 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Menu/MainMenu.unity
     guid: db9137fcbf0179343b52c9f3e595526f
   - enabled: 1
-    path: Assets/Scenes/FirstGameScene.unity
-    guid: 13e381e2130258e4b87bdf53f3fda8a2
-  - enabled: 1
-    path: Assets/Scenes/Options.unity
+    path: Assets/Scenes/Menu/Options/Options.unity
     guid: 924ff28b75a69f748a35440f8ae2b42f
+  - enabled: 1
+    path: Assets/Scenes/Menu/Options/OptionsGame.unity
+    guid: 5201d4763a6e3544e98d6de221b81c2a
+  - enabled: 1
+    path: Assets/Scenes/Menu/Options/OptionsVideo.unity
+    guid: fc444f68881a4714c928c268ce0c71c0
+  - enabled: 1
+    path: Assets/Scenes/Menu/Options/OptionsAudio.unity
+    guid: 75af5ccc2dc6db94496d71a722acf4e9
+  - enabled: 1
+    path: Assets/Scenes/Menu/Options/OptionsKeyboard.unity
+    guid: 561e08b23817787448b44a24beb2f829
+  - enabled: 1
+    path: Assets/Scenes/Game/FirstGameScene.unity
+    guid: 13e381e2130258e4b87bdf53f3fda8a2
   m_configObjects: {}

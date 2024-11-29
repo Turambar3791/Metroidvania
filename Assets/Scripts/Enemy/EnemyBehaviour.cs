@@ -11,7 +11,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    public Player player;
+    public PlayerMovement playerMovement;
+    public PlayerHealth playerHealth;
 
 
 
@@ -43,20 +44,18 @@ public class EnemyBehavior : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collider)
     {
-        if (player.ImmunityCounter <= 0)
+        if (playerHealth.ImmunityCounter <= 0)
         {
             if (collider.CompareTag("Player"))
             {
-                player.TakeDamage(damage);
-                player.KnockbackCounter = player.KnockbackTotalTime;
-                player.ImmunityCounter = player.ImmunityTotalTime;
+                playerHealth.TakeDamage(damage);
                 if (collider.transform.position.x <= transform.position.x)
                 {
-                    player.KnockFromRight = true;
+                    playerMovement.KnockFromRight = true;
                 }
                 else
                 {
-                    player.KnockFromRight = false;
+                    playerMovement.KnockFromRight = false;
                 }
             }
         }
