@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerHealth playerHealth;
     public PlayerAttack playerAttack;
+    public AttackArea attackArea;
 
     private float speed = 6f;
 
@@ -38,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     public float KnockbackCounter;
     public float KnockbackTotalTime = 0.1f;
     public bool KnockFromRight;
+
+    public bool isGrounded;
 
 
     // Start is called before the first frame update
@@ -110,11 +113,17 @@ public class PlayerMovement : MonoBehaviour
 
             coyoteTimeCounter = 0f;
         }
+
+        if (attackArea.isPogo) {
+            rigidBody.AddForce(transform.up * 200f, ForceMode2D.Impulse);
+            attackArea.isPogo = false;
+        }
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return isGrounded;
     }
 
     private void Flip()

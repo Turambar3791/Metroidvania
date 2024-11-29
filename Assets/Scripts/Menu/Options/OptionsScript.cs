@@ -11,11 +11,11 @@ public class OptionsScript : MonoBehaviour
     }
     public void OpenAudioOptions()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(4);
     }
     public void OpenVideoOptions()
     {
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(3);
     }
     public void OpenKeyboardOptions()
     {
