@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private GameObject attackArea = default;
+    private GameObject attackAreaUp = default;
+    private GameObject attackAreaDown = default;
+
+    public PlayerMovement playerMovement;
 
     public bool attacking = false;
     public bool attackInput;
@@ -16,6 +20,8 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         attackArea = transform.Find("AttackArea").gameObject;
+        attackAreaUp = transform.Find("AttackAreaUp").gameObject;
+        attackAreaDown = transform.Find("AttackAreaDown").gameObject;
     }
 
     // Update is called once per frame
@@ -37,6 +43,8 @@ public class PlayerAttack : MonoBehaviour
                 attackTimer = 0;
                 attacking = false;
                 attackArea.SetActive(attacking);
+                attackAreaUp.SetActive(attacking);
+                attackAreaDown.SetActive(attacking);
             }
         }
     }
@@ -44,6 +52,12 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         attacking = true;
-        attackArea.SetActive(attacking);
+        if (UserInput.instance.MoveInput.y == 0) {
+            attackArea.SetActive(attacking);
+        } else if (UserInput.instance.MoveInput.y > 0) {
+            attackAreaUp.SetActive(attacking);
+        } else if (UserInput.instance.MoveInput.y < 0 && !playerMovement.isGrounded) {
+            attackAreaDown.SetActive(attacking);
+        }
     }
 }
