@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public Player player;
+    public PlayerHealth playerHealth;
 
     bool playerTouch = false;
 
@@ -22,8 +22,8 @@ public class SpawnPoint : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && playerTouch)
         {
-            player.health = 5;
-            player.spawnPoint = rigidBody.position;
+            playerHealth.health = 5;
+            playerHealth.spawnPoint = rigidBody.position;
         }
     }
 

@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public int maxHealth = 5;
-    public int health;
+    public Vector2 moveDirection;
+    public bool jumpJustPressed;
+    public bool jumpBeingHeld;
+    public bool jumpReleased;
+    public bool menuOpenCloseInput;
 
-    private float horizontal;
     private bool isFacingRight = true;
+
+    public PlayerHealth playerHealth;
+    public PlayerAttack playerAttack;
 
     private float speed = 6f;
 
@@ -19,7 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     private SpriteRenderer sprite;
 
-    private float jumpingPower = 14.5f;
+    private float jumpingPower = 12.5f;
 
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
@@ -33,79 +39,54 @@ public class Player : MonoBehaviour
     public float KnockbackTotalTime = 0.1f;
     public bool KnockFromRight;
 
-    //immunity
-    public float ImmunityCounter;
-    public float ImmunityTotalTime = 2f;
-
-    //death
-    public float DeathCounter;
-    public float DeathTotalTime = 2f;
-
-    public Vector2 spawnPoint;
-    
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        // poruszanie sie
-        horizontal = Input.GetAxis("Horizontal");
-
-        if (KnockbackCounter <= 0 && health > 0)
+        if (playerAttack.attacking == false) 
         {
-            rigidBody.velocity = new Vector2(horizontal * speed, rigidBody.velocity.y);
+            Flip();
         }
 
-        // knock back
+        // poruszanie sie
+        jumpJustPressed = UserInput.instance.JumpJustPressed;
+        jumpReleased = UserInput.instance.JumpReleased;
+        moveDirection = UserInput.instance.MoveInput;
+
+        if (KnockbackCounter <= 0 && playerHealth.health > 0)
+        {
+            rigidBody.velocity = new Vector2(moveDirection.x * speed, rigidBody.velocity.y);
+        }
+
+        // knockback
         if (KnockbackCounter > 0)
         {
             if (KnockFromRight)
             {
-                rigidBody.velocity = new Vector2(-KnockbackForce, 3f);
+                rigidBody.velocity = new Vector2(-KnockbackForce, 7f);
             }
             else
             {
-                rigidBody.velocity = new Vector2(KnockbackForce, 3f);
+                rigidBody.velocity = new Vector2(KnockbackForce, 7f);
             }
 
             KnockbackCounter -= Time.deltaTime;
         } else
         {
-            if(health <= 0)
+            if(playerHealth.health <= 0)
             {
                 rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
             }
         }
         
 
-        // immunity
-        if (ImmunityCounter <= 0)
-        {
-        } else {
-            ImmunityCounter -= Time.deltaTime;
-        }
-
-        if (DeathCounter <= 0)
-        {
-            if(health <= 0)
-            {
-                rigidBody.transform.position = spawnPoint;
-                KnockbackCounter = 0;
-                health = 5;
-            }
-        }
-        else
-        {
-            DeathCounter -= Time.deltaTime;
-        }
 
         if (IsGrounded()) {
             coyoteTimeCounter = coyoteTime;
@@ -113,7 +94,7 @@ public class Player : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && health>0) {
+        if (jumpJustPressed && playerHealth.health > 0) {
             jumpBufferCounter = jumpBufferTime;
         } else {
             jumpBufferCounter -= Time.deltaTime;
@@ -124,7 +105,7 @@ public class Player : MonoBehaviour
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpingPower);
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && rigidBody.velocity.y > 0f) {
+        if (jumpReleased && rigidBody.velocity.y > 0f) {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * 0.5f);
 
             coyoteTimeCounter = 0f;
@@ -136,18 +117,9 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            if(DeathCounter <= 0) DeathCounter = DeathTotalTime;
-        }
-    }
-
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if (isFacingRight && moveDirection.x < 0f || !isFacingRight && moveDirection.x > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;

@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
-
-    private int damage = 1;
+    public int damage = 4;
+    public bool KnockFromRight = true;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.GetComponent<Health>() != null)
+        if (collider.GetComponent<EnemyHealth>() != null)
         {
-            Health health = collider.GetComponent<Health>();
-            health.Damage(damage);
+            if (collider.transform.position.x <= transform.position.x)
+            {
+                KnockFromRight = true;
+            }
+            else
+            {
+                KnockFromRight = false;
+            }
+            EnemyHealth health = collider.GetComponent<EnemyHealth>();
+            health.TakeDamage(damage, KnockFromRight);
         }
     }
 }
