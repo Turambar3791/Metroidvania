@@ -34,6 +34,7 @@ public class MenuScript : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        pauseManager.TogglePause();
         SceneManager.LoadSceneAsync(0);
     }
 }

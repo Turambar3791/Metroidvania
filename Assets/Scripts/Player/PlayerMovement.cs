@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerHealth playerHealth;
     public PlayerAttack playerAttack;
+    public AttackArea attackArea;
 
     private float speed = 6f;
 
@@ -39,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public float KnockbackTotalTime = 0.1f;
     public bool KnockFromRight;
 
+    public bool isGrounded;
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerAttack.attacking == false) 
+        if (playerAttack.attacking == false)
         {
             Flip();
         }
@@ -78,43 +82,59 @@ public class PlayerMovement : MonoBehaviour
             }
 
             KnockbackCounter -= Time.deltaTime;
-        } else
+        }
+        else
         {
-            if(playerHealth.health <= 0)
+            if (playerHealth.health <= 0)
             {
                 rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
             }
         }
-        
 
 
-        if (IsGrounded()) {
+
+        if (IsGrounded())
+        {
             coyoteTimeCounter = coyoteTime;
-        } else {
+        }
+        else
+        {
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if (jumpJustPressed && playerHealth.health > 0) {
+        if (jumpJustPressed && playerHealth.health > 0)
+        {
             jumpBufferCounter = jumpBufferTime;
-        } else {
+        }
+        else
+        {
             jumpBufferCounter -= Time.deltaTime;
         }
 
         //skakanie
-        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f) {
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
+        {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpingPower);
         }
 
-        if (jumpReleased && rigidBody.velocity.y > 0f) {
+        if (jumpReleased && rigidBody.velocity.y > 0f)
+        {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * 0.5f);
 
             coyoteTimeCounter = 0f;
+        }
+
+        if (attackArea.isPogo)
+        {
+            rigidBody.AddForce(transform.up * 200f, ForceMode2D.Impulse);
+            attackArea.isPogo = false;
         }
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return isGrounded;
     }
 
     private void Flip()
