@@ -22,7 +22,7 @@ public class OptionsKeyboardScript : MonoBehaviour
 
     private void OnKeyPress(InputAction.CallbackContext context)
     {
-        Debug.Log($"Naciœniêto: {context.control.displayName}");
+        Debug.Log($"Naciï¿½niï¿½to: {context.control.displayName}");
     }
 
     public void BackToOptions()
