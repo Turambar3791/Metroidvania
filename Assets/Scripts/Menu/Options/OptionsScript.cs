@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class OptionsScript : MonoBehaviour
 {
+    public PauseManager pauseManager;
+
     public void OpenGameOptions()
     {
         SceneManager.LoadSceneAsync(2);
     }
     public void OpenAudioOptions()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(4);
     }
     public void OpenVideoOptions()
     {
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(3);
     }
     public void OpenKeyboardOptions()
     {
@@ -24,5 +26,10 @@ public class OptionsScript : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadSceneAsync(0);
+    }
+    public void BackToGameMenu()
+    {
+        pauseManager.gameMenuPanel.SetActive(true);
+        pauseManager.gameOptionsPanel.SetActive(false);
     }
 }
