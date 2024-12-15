@@ -9,23 +9,23 @@ public class OptionsScript : MonoBehaviour
 
     public void OpenGameOptions()
     {
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync("OptionsGame");
     }
     public void OpenAudioOptions()
     {
-        SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync("OptionsAudio");
     }
     public void OpenVideoOptions()
     {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync("OptionsVideo");
     }
     public void OpenKeyboardOptions()
     {
-        SceneManager.LoadSceneAsync(5);
+        SceneManager.LoadSceneAsync("OptionsKeyboard");
     }
     public void BackToMenu()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync("MainMenu");
     }
     public void BackToGameMenu()
     {

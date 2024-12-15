@@ -9,11 +9,11 @@ public class MenuScript : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(6);
+        SceneManager.LoadSceneAsync("FirstGameScene");
     }
     public void OpenOptions()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync("Options");
     }
     public void OpenGameOptions()
     {
@@ -35,6 +35,6 @@ public class MenuScript : MonoBehaviour
     public void ReturnToMenu()
     {
         pauseManager.TogglePause();
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 }
