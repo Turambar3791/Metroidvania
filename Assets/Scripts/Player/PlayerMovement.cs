@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool jumpReleased;
     public bool menuOpenCloseInput;
 
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     public PlayerHealth playerHealth;
     public PlayerAttack playerAttack;
@@ -41,17 +41,19 @@ public class PlayerMovement : MonoBehaviour
     public float KnockbackTotalTime = 0.1f;
     public bool KnockFromRight;
 
+    private float PogoPower = 9f;
+    public float PogoCounter;
+    public float PogoTotalTime = 0.2f;
+
     public bool isGrounded;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (playerAttack.attacking == false)
@@ -91,8 +93,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-
-
+        // coyoteTime
         if (IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
@@ -111,12 +112,11 @@ public class PlayerMovement : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        //skakanie
+        // skakanie
         if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpingPower);
         }
-
         if (jumpReleased && rigidBody.velocity.y > 0f)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * 0.5f);
@@ -124,10 +124,16 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
 
+        // pogo
         if (attackArea.isPogo)
         {
-            rigidBody.AddForce(transform.up * 200f, ForceMode2D.Impulse);
-            attackArea.isPogo = false;
+            PogoCounter = PogoTotalTime;
+            attackArea.isPogo  = false;
+        }
+        if (PogoCounter > 0)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, PogoPower);
+            PogoCounter -= Time.deltaTime;
         }
     }
 
@@ -137,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         return isGrounded;
     }
 
-    private void Flip()
+    public void Flip()
     {
         if (isFacingRight && moveDirection.x < 0f || !isFacingRight && moveDirection.x > 0f)
         {

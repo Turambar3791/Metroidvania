@@ -20,6 +20,16 @@ public class UserInput : MonoBehaviour
     private InputAction _attackAction;
     private InputAction _menuOpenCloseAction;
 
+    void Start()
+    {
+        SetupInputActions();
+        MoveInput = _moveAction.ReadValue<Vector2>();
+        JumpJustPressed = _jumpAction.WasPressedThisFrame();
+        JumpReleased = _jumpAction.WasReleasedThisFrame();
+        AttackInput = _attackAction.WasPressedThisFrame();
+        MenuOpenCloseInput = _menuOpenCloseAction.WasPressedThisFrame();
+    }
+
     private void Awake()
     {
         if (instance == null)

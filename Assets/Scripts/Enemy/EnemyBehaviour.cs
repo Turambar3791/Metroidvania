@@ -11,12 +11,16 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    public PlayerMovement playerMovement;
-    public PlayerHealth playerHealth;
-
-
+    private PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
 
     public int damage;
+
+    void Start()
+    {
+        playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+    }
 
     // Update is called once per frame
     void Update()

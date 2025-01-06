@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class OptionsKeyboardScript : MonoBehaviour
 {
     public InputAction anyKeyAction;
+    public PauseManager pauseManager;
 
     private void OnEnable()
     {

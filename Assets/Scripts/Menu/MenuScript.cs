@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     public PauseManager pauseManager;
+    public SceneController sceneController;
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("FirstGameScene");
+        sceneController.NextScene();
     }
     public void OpenOptions()
     {
