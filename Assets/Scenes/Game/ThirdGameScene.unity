@@ -1104,8 +1104,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  playerMovement: {fileID: 0}
-  playerHealth: {fileID: 0}
   damage: 1
 --- !u!61 &759729008
 BoxCollider2D:
@@ -1553,8 +1551,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  playerMovement: {fileID: 0}
-  playerHealth: {fileID: 0}
   damage: 1
 --- !u!61 &1121629374
 BoxCollider2D:
@@ -2213,7 +2209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2ccb566d682f349897ea758d4531cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: SecondScene
+  targetScene: SecondGameScene
   targetObjectName: Transition2
   exitDirection: left
   sceneController: {fileID: 1384389459}

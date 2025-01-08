@@ -14,6 +14,10 @@ public class Transition : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
+            if (exitDirection == "top right" || exitDirection == "top left")
+            {
+                collider.gameObject.GetComponent<PlayerMovement>().topFlyCounter = 1f;
+            }
             sceneController.sceneName = targetScene;
             sceneController.NextScene();
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -42,13 +46,25 @@ public class Transition : MonoBehaviour
                 {
                     player.transform.position = new Vector3(targetObject.transform.position.x + 1.5f, targetObject.transform.position.y - 1f, targetObject.transform.position.z);
                 }
-                else if (exitDirection == "top")
+                else if (exitDirection == "top right")
                 {
-                    player.transform.position = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y, targetObject.transform.position.z);
+                    player.transform.position = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y + 2f, targetObject.transform.position.z);
+                    player.GetComponent<PlayerMovement>().exitTopCounter = 0.2f;
+                    player.GetComponent<PlayerMovement>().exitTopSideDirection = 1f;
+                }
+                else if (exitDirection == "top left")
+                {
+                    player.transform.position = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y + 2f, targetObject.transform.position.z);
+                    player.GetComponent<PlayerMovement>().isFacingRight = false;
+                    Vector3 localScale = player.transform.localScale;
+                    localScale.x *= -1f;
+                    player.transform.localScale = localScale;
+                    player.GetComponent<PlayerMovement>().exitTopCounter = 0.2f;
+                    player.GetComponent<PlayerMovement>().exitTopSideDirection = -1f;
                 }
                 else if (exitDirection == "bottom")
                 {
-                    player.transform.position = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y, targetObject.transform.position.z);
+                    player.transform.position = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y - 2f, targetObject.transform.position.z);
                 }
             }
         }        

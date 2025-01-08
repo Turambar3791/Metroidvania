@@ -47,6 +47,14 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded;
 
+    //top transition fly
+    private float topFlyPower = 12f;
+    public float topFlyCounter;
+    private float exitTopPower = 6f;
+    public float exitTopCounter;
+    private float exitTopSidePower = 6f;
+    private float exitTopSideCounter;
+    public float exitTopSideDirection;
 
     void Start()
     {
@@ -134,6 +142,24 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, PogoPower);
             PogoCounter -= Time.deltaTime;
+        }
+
+        // top transition fly
+        if (topFlyCounter > 0)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, topFlyPower);
+            topFlyCounter -= Time.deltaTime;
+        }
+        if (exitTopCounter > 0)
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, exitTopPower);
+            exitTopCounter -= Time.deltaTime;
+            if (exitTopCounter < 0.1f) exitTopSideCounter = 0.3f;
+        }
+        if (exitTopSideCounter > 0)
+        {
+            rigidBody.velocity = new Vector2(exitTopSidePower * exitTopSideDirection, rigidBody.velocity.y);
+            exitTopSideCounter -= Time.deltaTime;
         }
     }
 
