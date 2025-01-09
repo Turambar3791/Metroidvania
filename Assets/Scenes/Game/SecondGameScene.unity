@@ -453,7 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetScene: FirstGameScene
   targetObjectName: Transition1
-  exitDirection: bottom
+  exitDirection: left
   sceneController: {fileID: 863566988}
 --- !u!1 &565422884
 GameObject:
