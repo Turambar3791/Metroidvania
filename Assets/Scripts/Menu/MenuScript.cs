@@ -16,11 +16,6 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Options");
     }
-    public void OpenGameOptions()
-    {
-        pauseManager.gameMenuPanel.SetActive(false);
-        pauseManager.gameOptionsPanel.SetActive(true);
-    }
 
     public void QuitGame()
     {

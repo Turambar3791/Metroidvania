@@ -1,29 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnPoint : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
 
     bool playerTouch = false;
-
-    [SerializeField] private Rigidbody2D rigidBody;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && playerTouch)
         {
+            playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
             playerHealth.health = 5;
-            playerHealth.spawnPoint = rigidBody.position;
+            playerHealth.spawnScene = SceneManager.GetActiveScene().name;
         }
     }
 
@@ -32,7 +30,7 @@ public class SpawnPoint : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             playerTouch = true;
-        }    
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)

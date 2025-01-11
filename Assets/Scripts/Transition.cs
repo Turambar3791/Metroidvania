@@ -10,10 +10,15 @@ public class Transition : MonoBehaviour
     public string exitDirection;
     public SceneController sceneController;
 
+    private int currentHealth;
+    private string currentSpawnPointSceneName;
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {
+            currentHealth = collider.gameObject.GetComponent<PlayerHealth>().health;
+            currentSpawnPointSceneName = collider.gameObject.GetComponent<PlayerHealth>().spawnScene;
             if (exitDirection == "top right" || exitDirection == "top left")
             {
                 collider.gameObject.GetComponent<PlayerMovement>().topFlyCounter = 1f;
@@ -32,6 +37,8 @@ public class Transition : MonoBehaviour
         if (targetObject != null)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<PlayerHealth>().health = currentHealth;
+            player.GetComponent<PlayerHealth>().spawnScene = currentSpawnPointSceneName;
             if (player != null)
             {
                 if (exitDirection == "left")
