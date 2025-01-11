@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,20 +11,23 @@ public class PlayerHealth : MonoBehaviour
 
     //immunity
     public float ImmunityCounter;
-    public float ImmunityTotalTime = 1.5f;
+    public float ImmunityTotalTime = 1f;
 
     //death
     public float DeathCounter;
     public float DeathTotalTime = 2f;
 
-    public Vector2 spawnPoint;
+    private bool enableDeathCode;
+
+    public string spawnScene;
 
     [SerializeField] private Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        enableDeathCode = true;
+        if (health == 0) health = maxHealth;
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -40,18 +44,31 @@ public class PlayerHealth : MonoBehaviour
         // death
         if (DeathCounter <= 0)
         {
-            if (health <= 0)
+            if (health <= 0 && enableDeathCode)
             {
-                rigidBody.transform.position = new Vector3(spawnPoint.x, spawnPoint.y, -2);
-                playerMovement.KnockbackCounter = 0;
-                health = maxHealth;
-            }
+                enableDeathCode = false;
+                GameObject sceneController = GameObject.Find("GameManager");
+                Debug.Log(spawnScene);
+                sceneController.GetComponent<SceneController>().sceneName = spawnScene;
+                sceneController.GetComponent<SceneController>().NextScene();
+                SceneManager.sceneLoaded += OnSceneLoaded;
+            } 
         }
         else
         {
             DeathCounter -= Time.deltaTime;
         }
 
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject spawnPoint = GameObject.Find("SpawnPoint");
+        player.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, -2);
+        playerMovement.KnockbackCounter = 0;
+        health = maxHealth;
     }
 
     public void TakeDamage(int damage)
