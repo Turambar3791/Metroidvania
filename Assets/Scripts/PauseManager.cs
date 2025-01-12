@@ -61,5 +61,7 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0 : 1;
+        GameObject.Find("Player").GetComponent<PlayerAttack>().enableAttackPause = !isPaused;
+        GameObject.Find("Player").GetComponent<PlayerMovement>().enableMovementPause = !isPaused;
     }
 }

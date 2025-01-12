@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
+public class EnemyMovementMrowka : MonoBehaviour
 {
     private float speed = -2f;
     private bool IsFacingRight;
@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerHealth playerHealth;
 
-    public int damage;
+    private int damage = 1;
 
     void Start()
     {
@@ -53,7 +53,6 @@ public class EnemyBehavior : MonoBehaviour
             if (collider.CompareTag("Player"))
             {
                 playerHealth.TakeDamage(damage);
-
                 if (collider.transform.position.x <= transform.position.x)
                 {
                     playerMovement.KnockFromRight = true;

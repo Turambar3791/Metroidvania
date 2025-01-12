@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7300693867086349246}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: WallDetect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1794017587843203119}
   - component: {fileID: 4250067094919032265}
   - component: {fileID: 9070816973330433937}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Enemy - Mrowka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 4021812071725853783}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.91, y: 1.35, z: -1}
+  m_LocalPosition: {x: -5.91, y: 1.35, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -246,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6126261481904947746}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: GroundDetect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,6 +276,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 984054439592908252}
     m_Modifications:
+    - target: {fileID: 350913095640033391, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175410242557210446, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021989710924542640, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3143100127563607229, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.624
@@ -316,9 +328,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5004833056332063956, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5419787825895361229, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271796981763584893, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804763789693461986, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8940036166802015404, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
       propertyPath: m_Name
       value: mrowka
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940036166802015404, guid: 72d28865d04e22b45bb2bd31ed4795b4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
