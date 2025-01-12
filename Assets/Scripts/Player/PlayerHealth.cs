@@ -49,7 +49,14 @@ public class PlayerHealth : MonoBehaviour
                 enableDeathCode = false;
                 GameObject sceneController = GameObject.Find("GameManager");
                 Debug.Log(spawnScene);
-                sceneController.GetComponent<SceneController>().sceneName = spawnScene;
+                if (spawnScene != "")
+                {
+                    sceneController.GetComponent<SceneController>().sceneName = spawnScene;
+                }
+                else
+                {
+                    sceneController.GetComponent<SceneController>().sceneName = "FirstGameScene";
+                }
                 sceneController.GetComponent<SceneController>().NextScene();
                 SceneManager.sceneLoaded += OnSceneLoaded;
             } 
@@ -66,7 +73,10 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject spawnPoint = GameObject.Find("SpawnPoint");
-        player.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, -2);
+        if (spawnPoint != null)
+        {
+            player.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, -2);
+        }
         playerMovement.KnockbackCounter = 0;
         health = maxHealth;
     }
@@ -74,6 +84,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        GameObject.Find("PauseManager").GetComponent<PauseManager>().HitPause(0.05f);
         playerMovement.KnockbackCounter = playerMovement.KnockbackTotalTime;
         ImmunityCounter = ImmunityTotalTime;
         if (health <= 0)

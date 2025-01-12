@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553943242136416146}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.004, y: -0.091, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -70,8 +70,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.13786739
-  m_PointLightOuterRadius: 5.008635
+  m_PointLightInnerRadius: 0.12878409
+  m_PointLightOuterRadius: 6.518212
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -201,11 +201,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0, g: 0.9150943, b: 0.906815, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.61, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -274,8 +274,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.456, y: 0.401}
+    newSize: {x: 6.61, y: 0.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1234,11 +1234,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6580234167049007707, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.017
+      value: 0.023
       objectReference: {fileID: 0}
     - target: {fileID: 6580234167049007707, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.152
+      value: 0.163
       objectReference: {fileID: 0}
     - target: {fileID: 6580234167049007707, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1366,11 +1366,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6580234167049007707, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.004
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 6580234167049007707, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.141
+      value: 0.181
       objectReference: {fileID: 0}
     - target: {fileID: 6580234167049007707, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1404,6 +1404,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 10.955
       objectReference: {fileID: 0}
+    - target: {fileID: 9169243677332824803, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 65cf8e5bd001b9d489f495501e39e3b5, type: 2}
     - target: {fileID: 9171578373260706575, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
       propertyPath: m_Name
       value: waterguy
@@ -1415,8 +1419,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9171578373260706575, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3870318722810936028}
   m_SourcePrefab: {fileID: 100100000, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+--- !u!1 &6130859886571092473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9171578373260706575, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+  m_PrefabInstance: {fileID: 3049725823652133622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3870318722810936028
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6130859886571092473}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65cf8e5bd001b9d489f495501e39e3b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &8143490432497010861 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6580234167049007707, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}

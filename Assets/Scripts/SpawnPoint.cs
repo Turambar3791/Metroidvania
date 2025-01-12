@@ -21,7 +21,10 @@ public class SpawnPoint : MonoBehaviour
         {
             playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
             playerHealth.health = 5;
-            playerHealth.spawnScene = SceneManager.GetActiveScene().name;
+            string sceneName = SceneManager.GetActiveScene().name;
+            playerHealth.spawnScene = sceneName;
+            PlayerPrefs.SetString("LastScene", sceneName);
+            PlayerPrefs.Save();
         }
     }
 

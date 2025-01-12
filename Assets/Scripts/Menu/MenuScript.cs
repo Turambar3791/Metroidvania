@@ -2,14 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class MenuScript : MonoBehaviour
 {
     public PauseManager pauseManager;
     public SceneController sceneController;
 
-    public void PlayGame()
+    void Start()
     {
+        if (PlayerPrefs.GetString("LastScene", "FirstGameScene") != "FirstGameScene") GameObject.Find("ContinueButton").GetComponent<Button>().interactable = true;
+    }
+
+    public void ContinueGame()
+    {
+        sceneController.sceneName = PlayerPrefs.GetString("LastScene", "FirstGameScene");
+        sceneController.NextScene();
+    }
+
+    public void NewGame()
+    {
+        sceneController.sceneName = "FirstGameScene";
         sceneController.NextScene();
     }
     public void OpenOptions()

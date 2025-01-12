@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerHealth playerHealth;
     public PlayerAttack playerAttack;
     public AttackArea attackArea;
+    Animator animator;
 
     private float speed = 6f;
 
@@ -60,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        animator = transform.Find("waterguy").gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -76,7 +79,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (KnockbackCounter <= 0 && playerHealth.health > 0)
         {
-            rigidBody.velocity = new Vector2(moveDirection.x * speed, rigidBody.velocity.y);
+            if (moveDirection.x > 0)
+            {
+                rigidBody.velocity = new Vector2(1 * speed, rigidBody.velocity.y);
+            }
+            else if (moveDirection.x < 0)
+            {
+                rigidBody.velocity = new Vector2(-1 * speed, rigidBody.velocity.y);
+            }
+            else
+            {
+                rigidBody.velocity = new Vector2(0 * speed, rigidBody.velocity.y);
+            }
+            animator.SetFloat("xVelocity", Math.Abs(rigidBody.velocity.x));
         }
 
         // knockback
@@ -105,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
+            animator.SetBool("isJumping", !isGrounded);
         }
         else
         {
@@ -114,6 +130,8 @@ public class PlayerMovement : MonoBehaviour
         if (jumpJustPressed && playerHealth.health > 0)
         {
             jumpBufferCounter = jumpBufferTime;
+            isGrounded = false;
+            animator.SetBool("isJumping", !isGrounded);
         }
         else
         {

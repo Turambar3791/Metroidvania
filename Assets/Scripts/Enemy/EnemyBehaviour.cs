@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    private float speed = 2f;
+    private float speed = -2f;
     private bool IsFacingRight;
 
     [SerializeField] private Transform groundCheck;
