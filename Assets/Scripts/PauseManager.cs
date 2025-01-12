@@ -11,8 +11,13 @@ public class PauseManager : MonoBehaviour
     public bool menuOpenCloseInput;
     private KeyCode defaultMenuInput;
 
+    private float hitPauseCounter;
+    public bool isHit;
+
     void Start()
     {
+        hitPauseCounter = 0f;
+        isHit = false;
     }
 
     void Update()
@@ -27,6 +32,24 @@ public class PauseManager : MonoBehaviour
                 TogglePause();
             }
         }
+
+        if (hitPauseCounter > 0)
+        {
+            hitPauseCounter -= Time.deltaTime;
+            Debug.Log(hitPauseCounter);
+        } else if (hitPauseCounter<=0 && isHit)
+        {
+            TogglePause();
+            isHit = false;
+        }
+        
+    }
+
+    public void HitPause()
+    {
+        hitPauseCounter = 0.1f;
+        isHit = true;
+        TogglePause();  
     }
 
     public void TogglePause()

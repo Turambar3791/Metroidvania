@@ -73,6 +73,7 @@ public class PlayerAttack : MonoBehaviour
                 waterguyAttackUp.SetActive(attacking);
                 waterguyAttackBottom.SetActive(attacking);
                 waterguy.SetActive(true);
+
                 enableAttack = false;
                 attackBlockerCounter = attackBlockerTotalTime;
             }
@@ -82,6 +83,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         attacking = true;
+        waterguy.GetComponent<Animator>().SetFloat("xVelocity", 0);
         if (UserInput.instance.MoveInput.y == 0)
         {
             attackArea.SetActive(attacking);
