@@ -45,11 +45,16 @@ public class PauseManager : MonoBehaviour
         
     }
 
-    public void HitPause()
+    public void HitPause(float duration)
     {
-        hitPauseCounter = 0.1f;
-        isHit = true;
-        TogglePause();  
+        StartCoroutine(PauseCoroutine(duration));
+    }
+
+    private IEnumerator PauseCoroutine(float duration)
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1f;
     }
 
     public void TogglePause()

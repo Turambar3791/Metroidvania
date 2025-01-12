@@ -29,7 +29,6 @@ public class PlayerHealth : MonoBehaviour
         enableDeathCode = true;
         if (health == 0) health = maxHealth;
         rigidBody = GetComponent<Rigidbody2D>();
-        //GameObject.Find("PauseManager").GetComponent<PauseManager>().HitPause();
     }
 
     // Update is called once per frame
@@ -85,6 +84,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        GameObject.Find("PauseManager").GetComponent<PauseManager>().HitPause(0.05f);
         playerMovement.KnockbackCounter = playerMovement.KnockbackTotalTime;
         ImmunityCounter = ImmunityTotalTime;
         if (health <= 0)
