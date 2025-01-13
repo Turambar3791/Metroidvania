@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     public Camera myCamera;
 
     // Update is called once per frame
     void Update()
     { 
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
         if(playerHealth.DeathCounter <= 0 && playerHealth.health <= 0)
         {
             myCamera.enabled = false;
