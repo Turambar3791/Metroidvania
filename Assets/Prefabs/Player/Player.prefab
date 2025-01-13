@@ -503,7 +503,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 0.9843137, g: 1, b: 0, a: 0.16862746}
+  m_Color: {r: 0.9843137, g: 1, b: 0, a: 0}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 0}
   m_Sprites: []
@@ -794,7 +794,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 0.9843137, g: 1, b: 0, a: 0.16862746}
+  m_Color: {r: 0.9843137, g: 1, b: 0, a: 0}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 0}
   m_Sprites: []
@@ -1083,7 +1083,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 0.9843137, g: 1, b: 0, a: 0.16862746}
+  m_Color: {r: 0.9843137, g: 1, b: 0, a: 0}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 0}
   m_Sprites: []
