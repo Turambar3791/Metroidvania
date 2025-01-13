@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1901511920883282385}
   - component: {fileID: 8313368545104583971}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4923393136006814303}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 827811963635873675}
   - component: {fileID: 6039126886998049368}
   - component: {fileID: 6468038068419304198}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -298,6 +298,7 @@ MonoBehaviour:
   playerMovement: {fileID: 6468038068419304198}
   attacking: 0
   attackInput: 0
+  enableAttackPause: 1
   timeToAttack: 0.25
 --- !u!114 &6039126886998049368
 MonoBehaviour:
@@ -355,6 +356,7 @@ MonoBehaviour:
   topFlyCounter: 0
   exitTopCounter: 0
   exitTopSideDirection: 0
+  enableMovementPause: 1
 --- !u!1 &2410942324512887331
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +372,7 @@ GameObject:
   - component: {fileID: 5372370563563872354}
   - component: {fileID: 7721554618570316305}
   - component: {fileID: 6947511931422705493}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +663,7 @@ GameObject:
   - component: {fileID: 3695300115664739159}
   - component: {fileID: 5088814076614563768}
   - component: {fileID: 1556252727473223899}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: AttackAreaDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +954,7 @@ GameObject:
   - component: {fileID: 2452799730143190794}
   - component: {fileID: 4978096526614621994}
   - component: {fileID: 342952512431801699}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: AttackAreaUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,6 +1234,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1746736733939241036}
     m_Modifications:
+    - target: {fileID: 137232441957762337, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 809357116924027826, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948220248646626830, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090722769716566498, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626988562329699922, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6580234167049007707, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.023
@@ -1272,9 +1294,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.217
       objectReference: {fileID: 0}
+    - target: {fileID: 7539198456638378264, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8730946519888516271, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9171578373260706575, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
       propertyPath: m_Name
       value: waterguyAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171578373260706575, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9171578373260706575, guid: 415149ce6e7785b4c9608673fe5f24f6, type: 3}
       propertyPath: m_IsActive
@@ -1298,6 +1332,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1746736733939241036}
     m_Modifications:
+    - target: {fileID: 137232441957762337, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333830114895865510, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948220248646626830, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308256816701648567, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314176414712004770, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4106334639411016191, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6580234167049007707, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.059
@@ -1338,9 +1396,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 21.055
       objectReference: {fileID: 0}
+    - target: {fileID: 8573686959173803735, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9171578373260706575, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
       propertyPath: m_Name
       value: waterguyAttackUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171578373260706575, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9171578373260706575, guid: 879e1e88835522f4da8a953f222fd731, type: 3}
       propertyPath: m_IsActive
@@ -1364,6 +1430,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1746736733939241036}
     m_Modifications:
+    - target: {fileID: 137232441957762337, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 559670612123507762, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948220248646626830, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802609144940090075, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468998956286739027, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6580234167049007707, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.002
@@ -1404,6 +1490,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 10.955
       objectReference: {fileID: 0}
+    - target: {fileID: 7054033125045183038, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8573686959173803735, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9169243677332824803, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
       propertyPath: m_Controller
       value: 
@@ -1411,6 +1505,10 @@ PrefabInstance:
     - target: {fileID: 9171578373260706575, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
       propertyPath: m_Name
       value: waterguy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171578373260706575, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9171578373260706575, guid: 5b061e7211571db4cb1888a06acffa65, type: 3}
       propertyPath: m_IsActive
@@ -1463,6 +1561,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1746736733939241036}
     m_Modifications:
+    - target: {fileID: 137232441957762337, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 754868421934379259, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948220248646626830, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308256816701648567, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6580234167049007707, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.022
@@ -1503,9 +1617,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -17.175
       objectReference: {fileID: 0}
+    - target: {fileID: 6809621649230879763, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8573686959173803735, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927039842193143508, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9171578373260706575, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
       propertyPath: m_Name
       value: waterguyAttackBottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171578373260706575, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9171578373260706575, guid: 557065d8f8220924aab5f1e3b645f152, type: 3}
       propertyPath: m_IsActive

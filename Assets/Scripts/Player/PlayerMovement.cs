@@ -58,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
     private float exitTopSideCounter;
     public float exitTopSideDirection;
 
+    public bool enableMovementPause = true;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -77,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         jumpReleased = UserInput.instance.JumpReleased;
         moveDirection = UserInput.instance.MoveInput;
 
-        if (KnockbackCounter <= 0 && playerHealth.health > 0)
+        if (KnockbackCounter <= 0 && playerHealth.health > 0 && enableMovementPause)
         {
             if (moveDirection.x > 0)
             {
@@ -189,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        if (isFacingRight && moveDirection.x < 0f || !isFacingRight && moveDirection.x > 0f)
+        if (isFacingRight && moveDirection.x < 0f || !isFacingRight && moveDirection.x > 0f && enableMovementPause)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;

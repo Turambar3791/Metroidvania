@@ -18,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
     public bool attackInput;
 
     private bool enableAttack = true;
+    public bool enableAttackPause = true;
 
     public float timeToAttack = 0.15f;
     private float attackTimer = 0f;
@@ -42,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
     {
         attackInput = UserInput.instance.AttackInput;
 
-        if (attackInput && enableAttack)
+        if (attackInput && enableAttack && enableAttackPause)
         {
             Attack();
         }
