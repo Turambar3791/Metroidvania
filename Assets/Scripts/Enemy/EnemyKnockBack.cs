@@ -30,7 +30,6 @@ public class EnemyKnockBack : MonoBehaviour
             {
                 rigidBody.velocity = new Vector2(KnockbackForce, 0);
             }
-
             KnockbackCounter -= Time.deltaTime;
         }
         else

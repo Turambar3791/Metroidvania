@@ -40,10 +40,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 984054439592908252}
-  - component: {fileID: 6934774084918990759}
   - component: {fileID: 5659502334065238295}
   - component: {fileID: 4136261848507748312}
   - component: {fileID: 1794017587843203119}
+  - component: {fileID: 6934774084918990759}
   - component: {fileID: 4250067094919032265}
   - component: {fileID: 9070816973330433937}
   m_Layer: 6
@@ -71,21 +71,6 @@ Transform:
   - {fileID: 7522143734120189722}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6934774084918990759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4021812071725853783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee981c2d9f4c3749b558723d76c2d1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 9
-  health: 0
-  enemyKnockBack: {fileID: 9070816973330433937}
 --- !u!50 &5659502334065238295
 Rigidbody2D:
   serializedVersion: 4
@@ -203,6 +188,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2340045, y: 0.52014506}
   m_EdgeRadius: 0
+--- !u!114 &6934774084918990759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4021812071725853783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee981c2d9f4c3749b558723d76c2d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 9
+  health: 0
+  enemyKnockBack: {fileID: 9070816973330433937}
 --- !u!114 &4250067094919032265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +220,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1024
-  damage: 1
 --- !u!114 &9070816973330433937
 MonoBehaviour:
   m_ObjectHideFlags: 0
