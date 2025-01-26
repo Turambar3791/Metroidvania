@@ -86,6 +86,7 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         GameObject.Find("PauseManager").GetComponent<PauseManager>().HitPause(0.05f);
         playerMovement.KnockbackCounter = playerMovement.KnockbackTotalTime;
+        Debug.Log("knock");
         ImmunityCounter = ImmunityTotalTime;
         if (health <= 0)
         {

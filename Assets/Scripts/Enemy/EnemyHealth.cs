@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+
     public int maxHealth = 9;
     public int health;
     public EnemyKnockBack enemyKnockBack;
