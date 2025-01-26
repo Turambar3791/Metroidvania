@@ -16,7 +16,7 @@ public class EnemyMovementKrecik : MonoBehaviour
     private Rigidbody2D rb;
 
     private int damage = 1;
-    private int distanceFromPlayer = 10;
+    private int distanceFromPlayer = 8;
     public bool attacking = false;
 
     private bool enableAttack = true;
@@ -26,7 +26,7 @@ public class EnemyMovementKrecik : MonoBehaviour
     private float attackTimer = 0f;
 
     private float attackBlockerCounter;
-    private float attackBlockerTotalTime = 0.3f;
+    private float attackBlockerTotalTime = 1f;
 
     // Start is called before the first frame update
     void Start()
